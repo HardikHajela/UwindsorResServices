@@ -1,0 +1,84 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+  	<meta name="description" content="Advisor(A) Update Page">
+  	<meta name="author" content="Ebuka Nwakoby">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+  <style> 
+  </style>
+   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  </head>
+  
+<div id="webform">
+  <center><h2>Advisor Update</h2></center>
+<form action="" method="post">
+
+  <div class= "container-fluid">
+  
+       
+    <center> <label for="id">ID</label></center>
+        <input type="number" class="form-control" id="id" name="id" placeholder="000" required>
+        <div id="idhelp" class="form-text">&ensp;Please Enter Advisor ID</div>
+        
+  
+         <center> <label for="name">Name</label> </center>
+        <input type="text" class="form-control" id="name" name="name" placeholder="Sample-Name" required>
+        <div id="namehelp" class="form-text">&ensp;Please Enter Advisor Name</div>
+ 
+        
+		<center><label for="position">Advisor Position</label></center>
+        <input type="text" class="form-control" id="position" name="position" placeholder="Advisor-Position" required>
+        <div id="namehelp" class="form-text">&ensp;Please Enter Advisor Position</div>
+  
+       
+		
+		<center><label for="dept">Advisor Department</label> </center>
+        <input type="text" class="form-control" id="dept" name="dept" placeholder="Advisor-Department" required>
+        <div id="namehelp" class="form-text">&ensp;Please Enter Advisor Department</div>
+  
+      
+		
+    <center><label for="phone">Advisor Phone Number</label></center>
+		 <input type="number" class="form-control" id="phone" name="phone" placeholder="0000000000" required>
+        <div id="idhelp" class="form-text">&ensp;Please Enter Advisor Phone Number</div>
+  
+		
+  
+    <center><label for="room">Advisor Room Number</label></center>
+        <input type="text" class="form-control" id="room" name="room" placeholder="Advisor-Number" required>
+        <div id="namehelp" class="form-text">&ensp;Please Enter Advisor Room Number</div>
+		
+		
+		
+		
+		
+		
+<br><br>
+    <center><input type="submit" value=" Submit Details " name="submit"/><br /></center>
+</form>
+  </div>
+  </div>
+
+<?php
+$mysqli = new mysqli("localhost", "hajela_COMP4150", "root", "hajela_COMP4150") or die(mysqli_error($mysqli));
+
+
+
+if (isset($_POST['submit'])){
+       echo '<script type="text/javascript">';
+       echo ' alert("Submission Successfully Recieved")';  //showing an alert box.
+       echo '</script>';
+  
+      $ID = $_POST["id"];
+      $NAME = $_POST["name"];
+	  $ADV_POS = $_POST["position"];
+	  $ADV_DEPT = $_POST["dept"];
+      $ADV_PHONE = $_POST["phone"];
+      $ADV_ROOM = $_POST["room"];	   
+          $mysqli->query("INSERT INTO advisor (ADV_ID, ADV_NAME, ADV_POSITION, ADV_DEPT, ADV_PHONE, ADV_ROOM_NO) VALUES ('$ID', '$NAME', '$ADV_POS', '$ADV_DEPT', '$ADV_PHONE', '$ADV_ROOM') ") or die($mysqli->error);
+      }
+
+?>
+  
+</html> 
