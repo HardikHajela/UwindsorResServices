@@ -1,3 +1,5 @@
+<h2>Uwindsor Residence Services</h2>
+
 This project was made in 3 phases. 
 Phase 1:
 Database schema and its implementations.
