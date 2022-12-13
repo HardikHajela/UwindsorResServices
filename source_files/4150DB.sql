@@ -596,33 +596,17 @@ WHERE PLACED LIKE 'N';
 
 #a. Present a report listing the names and Grade 12 numbers of students with the details of their lease agreements.  
 
- 
-
 SELECT STUDENT_NAME, G12NUM, LEASE_NUM, LEASE_TERM, MONTHLY_RENT, FLAT_ADDRESS, MOVEINDATE 
 
 FROM lease; 
 
- 
-
- 
-
- 
-
 #b. Display the details of the total rent paid by a given student. 
-
- 
 
 SELECT STUDENT_NAME, LEASE_TERM*MONTHLY_RENT AS TOTAL_RENT_PAID 
 
 FROM LEASE; 
 
- 
-
- 
-
 #c. Present a report on students that have not paid their invoices by a given date.  
-
- 
 
 SELECT G12NUM, STUDENT_NAME, INV_TERM_NUM, PAYMENT_DUE_DATE, LEASE_NUM 
 
@@ -630,19 +614,7 @@ FROM invoice
 
 WHERE PAYMENT_DUE LIKE 'Y'; 
 
- 
-
- 
-
- 
-
- 
-
- 
-
 #d. Display the details of flat inspections where the property was found to be in an unsatisfactory condition.  
-
- 
 
 SELECT INSPECTION_ID, INSPECTOR_NAME, DATE_OF_INSPECTION, PLACENUM, COMMENTS  
 
@@ -650,17 +622,7 @@ FROM inspection
 
 WHERE INSPECTION_OUTCOME LIKE 'bad'; 
 
- 
-
- 
-
- 
-
- 
-
 #e. Present a report of the names and Grade 12 numbers of students with their room number and place number in a particular hall of residence.  
-
- 
 
 SELECT LEASE.STUDENT_NAME, LEASE.G12NUM, LEASE.ROOM_NUMBER_IN_FLAT, LEASE.PLACENUM  
 
@@ -674,21 +636,8 @@ and ROOM.FLAT_ID = FLAT.FLAT_ID
 
 and FLAT.RES_NUM = RESIDENCE.RES_NUM; 
 
- 
-
- 
-
- 
-
- 
-
- 
-
- 
 
 #f. Present a report listing the details of all students currently on the waiting list for accommodation, that is, not placed.  
-
- 
 
 SELECT STUDENT_NAME, DEGREE_TYPE, DOMESTIC, SPECIAL_NEEDS, PLACED  
 
@@ -696,11 +645,6 @@ FROM `Student`
 
 WHERE PLACED LIKE 'N'; 
 
- 
-
- 
-
- 
 
 #g. Display the total number of students in each student category.  
 
@@ -712,15 +656,8 @@ FROM Student
 
 GROUP BY LEVEL_OF_STUDY; 
 
- 
-
- 
-
- 
 
 #h. Display the name and internal telephone number of the Advisor of Studies for a particular student.  
-
- 
 
 SELECT advisor.ADV_NAME, advisor.ADV_PHONE 
 
@@ -733,18 +670,8 @@ and advisor.ADV_ID=advisor_appointment.ADV_ID
 and student.G12NUM=advisor_appointment.G12NUM; 
 
  
-
- 
-
- 
-
- 
-
- 
-
 #i. Display the minimum, maximum, and average monthly rent for rooms in halls of residence. 
 
- 
 
 SELECT MIN(assign.MONTHLY_RENT), MAX(assign.MONTHLY_RENT), AVG(assign.MONTHLY_RENT)  
 
@@ -758,15 +685,8 @@ and ROOM.FLAT_ID = FLAT.FLAT_ID
 
 and FLAT.RES_NUM = RESIDENCE.RES_NUM; 
 
- 
-
- 
-
- 
 
  #j. Display the staff number, name, age, and current location of all members of the Hostel staff who are over 40 years old today. 
-
- 
 
 SELECT EMP_NUM, EMP_NAME, EMP_AGE, EMP_OFFICE_LOCATION 
 
@@ -792,8 +712,6 @@ Phase 2: PL-SQL
 
 #print some output.  
 
-   
-
 DELIMITER $$   
 
 CREATE OR REPLACE PROCEDURE P2Q1()   
@@ -810,8 +728,6 @@ BEGIN  
 
     DECLARE DATE_PASSED BOOLEAN DEFAULT TRUE;   
 
-   
-
     SELECT COUNT(student.PLACED)    
 
     INTO TOTAL_NUMBER_OF_UNASSIGNED_STUDENTS   
@@ -820,15 +736,11 @@ BEGIN  
 
     WHERE student.PLACED LIKE 'n';  
 
-          
-
     SELECT WHAT_TO_DO, TOTAL_NUMBER_OF_UNASSIGNED_STUDENTS, ASSIGNED_STATUS, ASSIGNMENT_LAST_DATE, DATE_PASSED;   
 
 END$$   
 
 DELIMITER ;   
-
-   
 
 CALL P2Q1;   
 
@@ -839,8 +751,7 @@ SELECT student.G12NUM, student.STUDENT_NAME 
     WHERE student.PLACED LIKE 'n';  
 
  
-
- #2  
+#2  
 
 DECLARE   
 
@@ -878,18 +789,11 @@ DBMS_OUTPUT.PUT_LINE( 'Flat type: '||  FLAT-TYPE); 
 
 END;  
 
- 
 
-
-#3 
-
- 
-
-#3 procedure with nested conditional statements to find out inspections done within a specific date whose outcome was bad so hostel employee can do the inspection again.  
+#3
+Procedure with nested conditional statements to find out inspections done within a specific date whose outcome was bad so hostel employee can do the inspection again.  
 
 DELIMITER $$  
-
-  
 
 CREATE OR REPLACE PROCEDURE P2Q3()  ?  
 
@@ -897,33 +801,17 @@ BEGIN  ? 
 
 DECLARE DATE_OF_INSPECTION DATE;   
 
- 
-
 DECLARE INSPECTION_OUTCOME VARCHAR(50);   
-
- 
-
- 
 
 DECLARE inspectid VARCHAR(20);  
 
- 
-
 SELECT INSPECTION_ID   
-
- 
 
 INTO inspectid  
 
- 
-
 FROM inspection  
 
- 
-
 LIMIT 1;   
-
- 
 
 IF DATE_OF_INSPECTION  
 
@@ -932,8 +820,6 @@ IF DATE_OF_INSPECTION 
     	IF INSPECTION_OUTCOME = 'BAD' THEN   
 
     	SELECT inspectid;   
-
-    	 
 
 END IF;   
 
@@ -946,14 +832,8 @@ DELIMITER ;                  
 
 CALL P2Q3(); 
 
- 
-
-
- 
 
 #4 Uses G12 num of a student to see if another student doesn’t have the same G12 num, if it does, displays the Student entry with that G12num  
-
-  
 
 DELIMITER $$   
 
@@ -979,23 +859,17 @@ END$$  
 
 DELIMITER ;   
 
-  
-
 CALL P2Q4('110032456');  
 
- 
 
-#5checks to see if a student has paid their invoice or not, if they have not paid then it will display the student name and address so reminder can be sent  
-
-  
+#5
+checks to see if a student has paid their invoice or not, if they have not paid then it will display the student name and address so reminder can be sent  
 
 DELIMITER $$  
 
 CREATE OR REPLACE PROCEDURE P2Q5()  
 
-BEGIN   
-
-   
+BEGIN
 
 DECLARE sname VARCHAR(300) DEFAULT NULL;  
 
@@ -1003,55 +877,31 @@ DECLARE faddress VARCHAR(300) DEFAULT NULL; 
 
 DECLARE finished INTEGER DEFAULT 0;  
 
- 
-
 DECLARE CURSOR1   
-
- 
 
 CURSOR FOR   
 
- 
-
 SELECT student_name, flat_address FROM invoice WHERE payment_due = 'Y' order by student_name;  
-
-  	 
 
 DECLARE CONTINUE HANDLER   
 
         FOR NOT FOUND SET finished = 1;  
 
-   
-
 OPEN cursor1;  
 
- 	 
-
 getAdd: LOOP  
-
- 
 
 FETCH cursor1 INTO sname, faddress;  
 
         IF finished = 1 THEN   
 
- 
-
 LEAVE getAdd;  
-
- 
 
 END IF;  
 
- 
-
 SELECT sname, faddress;  
 
- 
-
 end loop getAdd;  
-
-      
 
 CLOSE cursor1;  
 
@@ -1067,11 +917,7 @@ CALL P2Q5; 
 
  
 
- 
-
 #6 Procedure to find vacant rooms in flats so they can be further alotted to students  
-
-  
 
 DELIMITER $$   
 
@@ -1129,29 +975,6 @@ DELIMITER ;   
 
 CALL notPlacedQ6();  
 
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
-
- 
 
 #7  
 
@@ -1160,26 +983,15 @@ DELIMITER $$ 
 CREATE or REPLACE FUNCTION isVACANTQ7(givenFlatId VARCHAR(20))  
 
 RETURNS INT  
+DETERMINISTIC   
 
-   
-
-DETERMINISTIC  
-
-   
-
-BEGIN  
-
-   
+BEGIN   
 
 DECLARE VC_ROOM INT;    
-
-   
 
 select flat.NUMBER_OF_VACANT_ROOMS INTO VC_ROOM from flat  
 
 WHERE flat.FLAT_ID = givenFlatId;  
-
-   
 
 RETURN VC_ROOM;  
 
@@ -1187,13 +999,7 @@ END$$ 
 
 DELIMITER ;  
 
- 
-
 SELECT isVACANTQ7(679);  
-
-
- 
-
 
 
 #9. Write a PL/SQL code to create a trigger to perform appropriate action as #well as the code to show the effect of this trigger.  
@@ -1216,18 +1022,5 @@ CREATE or REPLACE TRIGGER TEST BEFORE UPDATE ON assign 
 
 delimiter ;  
 
- 
-
 UPDATE assign set assign.MONTHLY_RENT =600 where assign.G12NUM=110012344 and assign.PLACENUM like 'R1';  
-
- 
-
 UPDATE assign set assign.MONTHLY_RENT =750 where assign.G12NUM=110012344;  
-
-
-
-
-
-
-
-
