@@ -18,6 +18,6 @@ Design and Implementation of files in https://github.com/HardikHajela/UwindsorRe
 Rasleen Dhaliwal: Phase 1 Creation/Insertion of data in Tables, ER diagrams, flowcharts and  
 Design and Implementation of files in https://github.com/HardikHajela/UwindsorResServices/tree/main/source_files/update%20pages
 
-Hardik Hajela: Phase 1: Designed of the Database schema and normalized the tables in Phase 1. 
+Hardik Hajela: Phase 1: Designed the Database schema and normalized the tables in Phase 1. 
 Implementation of Indexes, Constraints and Views in Phase 1. Creation and Implementation of all Functions, Procedures and Triggers in Phase 2 and 3. 
 Design and Implementation of all the files in https://github.com/HardikHajela/UwindsorResServices/tree/main/source_files/emp%20home%20pages
