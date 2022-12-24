@@ -1,6 +1,6 @@
 <h2>Uwindsor Residence Services</h2>
 
-This project was made in 3 phases. 
+This Project is made for the course COMP 4150: Advanced and Practical Database Systems offered at the University of Windsor! It was made in 3 phases. 
 Phase 1:
 Database schema and its implementations.
 Phase 2:
