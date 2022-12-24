@@ -10,7 +10,7 @@ Integration for the Databases with the Front end! <br />
 
 To see it in action, Kindly visit: https://hajela.myweb.cs.uwindsor.ca/COMP4150/
 
-Contributions:
+Contributions:<br />
 Rebecca Wallace: Creating Phase 2 Error handling and Implementation of MySQL Cursors.
 Design and Implementation of files in https://github.com/HardikHajela/UwindsorResServices/tree/main/source_files/authentication%20and%20student%20pages
 
