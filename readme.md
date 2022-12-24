@@ -1,12 +1,12 @@
 <h2>Uwindsor Residence Services</h2>
 
-This Project is made for the course COMP 4150: Advanced and Practical Database Systems offered at the University of Windsor! It was made in 3 phases. 
+This Project is made for the course COMP 4150: Advanced and Practical Database Systems offered at the University of Windsor! It was made in 3 phases. <br />
 Phase 1:
-Database schema and its implementations.
+Database schema and its implementations.<br />
 Phase 2:
-Implementation of Advanced features of MySQL such as functions, procedures, triggers, etc.
+Implementation of Advanced features of MySQL such as functions, procedures, triggers, etc.<br />
 Phase 3:
-Integration for the Databases with the Front end! 
+Integration for the Databases with the Front end! <br />
 
 To see it in action, Kindly visit: https://hajela.myweb.cs.uwindsor.ca/COMP4150/
 
